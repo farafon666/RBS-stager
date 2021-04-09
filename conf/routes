@@ -1,0 +1,58 @@
+# Routes Config
+#
+# This file defines all application routes (Higher priority routes first)
+#
+
+module:testrunner
+# module:jobs
+
+GET     /                                       CIndex.Index
+
+#Assessment
+
+GET     /assessment/all                         CAssessment.GetAll
+GET     /assessment/:id                         CAssessment.GetByID
+GET     /assessment/:id/getEmployees            CAssessment.GetEmployees
+GET     /assessment/:id/getCandidates           CAssessment.GetCandidates
+POST    /assessment/create                      CAssessment.Create
+POST    /assessment/update                      CAssessment.Update
+POST    /assessment/delete                      CAssessment.Delete
+POST    /assessment/delEmployees                CAssessment.DeleteEmployees
+POST    /assessment/delCandidates               CAssessment.DeleteCandidates
+
+GET     /stateAssessment/all                    CStateAssessment.GetAll
+
+#Candidate
+
+GET     /candidate/all                          CCandidate.GetAll
+GET     /candidate/:id                          CCandidate.GetByID
+POST    /candidate/create                       CCandidate.Create
+POST    /candidate/update                       CCandidate.Update
+POST    /candidate/delete                       CCandidate.Delete
+
+#Employee
+
+GET     /employee/all                           CEmployee.GetAll
+GET     /employee/:id                           CEmployee.GetByID
+POST    /employee/create                        CEmployee.Create
+POST    /employee/update                        CEmployee.Update
+POST    /employee/delete                        CEmployee.Delete
+
+GET     /position/all                           CPosition.GetAll
+
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/*filepath                       Static.Serve("public")
+
+# Catch all, this will route any request into the controller path
+#
+#                    **** WARNING ****
+# Enabling this exposes any controller and function to the web.
+# ** This is a serious security issue if used online **
+#
+# For rapid development uncomment the following to add new controller.action endpoints
+# without having to add them to the routes table.
+# *       /:controller/:action                    :controller.:action
