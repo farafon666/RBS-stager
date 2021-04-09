@@ -58,4 +58,5 @@ create table assessment.toc_candidates_assessments(
     pk_id               serial not null primary key,    --Первичный ключ связи сотрудников
     fk_candidate        int not null references assessment.t_candidates(pk_id),            --Внешний ключ кандидата
     fk_assessment       int not null references assessment.t_assessments(pk_id)            --Внешний ключ ассессмента
+    с_state_candidate   varchar     --Состояние кандидата
 );
